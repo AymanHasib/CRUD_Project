@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This is Index page</title>
+</head>
+<body style="background-color: aliceblue">
+    <center>
+        <h1>Welcome to Student Record System</h1>
+        <h3>Store your Info</h3>
+        <hr/>
+        <a href="{% url 'stinsert' %}" id="addStudent">Add New Student Record</a>
+        <br>
+        <br>
+        <table border="5" style="background-color: lightgoldenrodyellow">
+            <tr>
+                <th>Student Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Mobile</th>
+                <th>Gender</th>
+            </tr>
+            {% for displayst in crudst %}
+            <tr>
+            <td>{{ displayst.id }}</td>
+            <td>{{ displayst.stname }}</td>
+            <td>{{ displayst.stemail }}</td>
+            <td>{{ displayst.staddress }}</td>
+            <td>{{ displayst.stmobile }}</td>
+            <td>{{ displayst.stnGender }}</td>
+            <td><a href="/Edit/{{ displayst.id }}">edit</a> </td>
+            <td><a href="/Delete/{{ displayst.id }}" onclick="return confirm('Are you sure to Delete?')" name="deleteUser">delete</a> </td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+
+</body>
+</html>
